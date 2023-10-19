@@ -7,9 +7,9 @@ use Filament\Support\Contracts\HasLabel;
 enum Implementacion: string implements HasLabel
 
 {
-    case Directo = 'directo';
+    case DIRECTO = 'directo';
     case DNI_PIN = 'dni-pin';
-    case SALDO = 'saldo';
+    case YAPE = 'saldo';
 
     public function getLabel(): ?string
     {

@@ -24,6 +24,15 @@ return new class extends Migration
             $table->enum('starlink', ['ok', 'nok']);
             $table->enum('vpn', ['ok', 'nok']);
             $table->timestamps();
+
+            //
+            //Calculados
+            $table->bigInteger("puerto_pbx")->nullable($value = true);
+            $table->bigInteger("puerto_winbox")->nullable($value = true);
+            $table->string("dominio")->nullable($value = true);
+            $table->string("ip")->nullable($value = true);
+            //
+            
         });
     }
 

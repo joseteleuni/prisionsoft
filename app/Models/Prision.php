@@ -20,4 +20,7 @@ class Prision extends Model
         'vpn' => Vpn::class,
 
     ];
+    
+
+    
 }

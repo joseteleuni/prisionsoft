@@ -10,6 +10,8 @@ class ListPrisions extends ListRecords
 {
     protected static string $resource = PrisionResource::class;
 
+    protected static ?string $title = 'Configuraciones de penales'; 
+
     protected function getHeaderActions(): array
     {
         return [

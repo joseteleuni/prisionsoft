@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
 
 use App\Enums\Fo;
 use App\Enums\Implementacion;
@@ -25,7 +26,11 @@ class PrisionResource extends Resource
 {
     protected static ?string $model = Prision::class;
 
+    protected static ?string $navigationLabel = 'Configuracion penales';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Configuraciones';
 
     public static function form(Form $form): Form
     {
@@ -33,19 +38,19 @@ class PrisionResource extends Resource
             ->schema([
                 //
 
-                TextInput::make('nombre'),
-                TextInput::make('codigo'),
-                TextInput::make('did'),
-                TextInput::make('num_gw')->numeric(),
-                TextInput::make('num_tpe')->numeric(),
+                TextInput::make('nombre')->required(),
+                TextInput::make('codigo')->required(),
+                TextInput::make('did')->label('DID'),
+                TextInput::make('num_gw')->label('Numero de GW')->numeric(),
+                TextInput::make('num_tpe')->label('Numero de TPE')->numeric(),
                 TextInput::make('ubicacion'),
                 Select::make('implementacion')
                   ->options(Implementacion::class),
                 Select::make('fo')
-                  ->options(Fo::class),
+                  ->options(Fo::class)->label('Fibra optica'),
                 Select::make('starlink')
                   ->options(Starlink::class),
-                Select::make('vpn')
+                Select::make('vpn')->label('VPN')
                   ->options(Vpn::class),
 
             ]);
@@ -56,6 +61,9 @@ class PrisionResource extends Resource
         return $table
             ->columns([
                 //
+                TextColumn::make('nombre'),
+                TextColumn::make('codigo')->label('Codigo'),
+
             ])
             ->filters([
                 //
