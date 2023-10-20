@@ -2,12 +2,18 @@
 
 namespace App\Models;
 
+//
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Departamento;
+
+//
 use App\Enums\Fo;
 use App\Enums\Implementacion;
 use App\Enums\Starlink;
 use App\Enums\Vpn;
+
 
 class Prision extends Model
 {
@@ -21,6 +27,10 @@ class Prision extends Model
 
     ];
     
+    public function departamento(): BelongsTo
+    {
+        return $this->belongsTo(Departamento::class);
+    }
 
     
 }

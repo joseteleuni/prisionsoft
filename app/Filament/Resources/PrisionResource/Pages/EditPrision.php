@@ -32,14 +32,9 @@ class EditPrision extends EditRecord
         $obj = new ConfigMikrotik($data);
         $obj->configuracion();
 
-        if($data['vpn']==1){
-
-            $data['puerto_winbox']=$obj->puerto_winbox;
-            $data['puerto_pbx']   =$obj->puerto_pbx;
-            
-        }
-
-        $data['dominio']=$obj->dominio;
+        $data['puerto_winbox']=$obj->puerto_winbox;
+        $data['puerto_pbx']   =$obj->puerto_pbx;
+        $data['dominio']      =$obj->dominio;
 
 
         $record->update($data);

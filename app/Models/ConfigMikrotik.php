@@ -18,7 +18,7 @@ class ConfigMikrotik{
     public function configuracion()  {
         
         //
-        if($this->data['vpn']=='1')
+        if($this->data['vpn']=='ok')
 
         {
             Log::info("Ejecutando config");
@@ -47,6 +47,12 @@ class ConfigMikrotik{
             $this->puerto_winbox = $response_portwinbox[0]["dst-port"];
             $this->puerto_pbx    = $response_pbxssh[0]["dst-port"];
            
+        }
+
+        else {
+            
+            $this->puerto_winbox="8291";
+            $this->puerto_pbx="32581";
         }
 
         $this->dominio = "51-".$this->data['codigo'].".dyndns.org";

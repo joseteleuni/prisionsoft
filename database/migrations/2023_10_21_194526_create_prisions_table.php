@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('did', 10);
             $table->unsignedInteger('num_gw');
             $table->unsignedInteger('num_tpe');
-            $table->string('ubicacion');
+            $table->unsignedBigInteger('departamento_id');
+            $table->foreign('departamento_id')->references('id')->on('departamentos');
             $table->enum('implementacion', ['directo', 'dni-pin','saldo']);
             $table->enum('fo', ['ok', 'nok']);
             $table->enum('starlink', ['ok', 'nok']);
