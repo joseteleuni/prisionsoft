@@ -15,7 +15,7 @@ class ImplementacionResource extends Resource
 {
     protected static ?string $model = Prision::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chart-bar-square';
 
     protected static ?string $navigationLabel = 'Implementacion';
 
@@ -26,6 +26,7 @@ class ImplementacionResource extends Resource
         return $table
             ->columns([
                 //
+                TextColumn::make('codigo')->searchable(),
                 TextColumn::make('nombre')->searchable(),
                 TextColumn::make('starlink')->searchable(),
                 TextColumn::make('fo')->label('Fibra Optica')->searchable(),
@@ -33,6 +34,7 @@ class ImplementacionResource extends Resource
                 TextColumn::make('vpn')->label('VPN')->searchable(),
 
             ])
+            ->defaultSort('codigo', 'asc')
             ->filters([
                 //
                 SelectFilter::make('starlink')
@@ -50,7 +52,7 @@ class ImplementacionResource extends Resource
                 ->options([
                     'directo' => 'DIRECTO',
                     'dni-pin' => 'DNI-PIN',
-                    'saldo'   => 'SALDO'
+                    'saldo'   => 'YAPE'
                  ]),
             ]);
     }

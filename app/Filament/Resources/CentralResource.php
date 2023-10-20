@@ -13,7 +13,7 @@ class CentralResource extends Resource
 {
     protected static ?string $model = Prision::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chart-bar-square';
 
     protected static ?string $navigationLabel = 'Centrales';
 
@@ -24,13 +24,15 @@ class CentralResource extends Resource
         return $table
             ->columns([
                 //
+                TextColumn::make('codigo')->searchable(),
                 TextColumn::make('nombre')->searchable(),
                 TextColumn::make('num_gw')->label('Numero de GWs')->searchable(),
                 TextColumn::make('num_tpe')->label('Numero de TPE')->searchable(),
                 TextColumn::make('dominio')->label('Dominio')->searchable(), 
                 TextColumn::make('puerto_pbx')->label('Puerto SSH')->searchable(), 
                 
-            ]) ;
+            ])
+            ->defaultSort('codigo', 'asc');
     }
 
     public static function getPages(): array

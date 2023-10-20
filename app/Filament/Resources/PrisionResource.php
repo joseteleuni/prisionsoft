@@ -28,7 +28,7 @@ class PrisionResource extends Resource
 
     protected static ?string $navigationLabel = 'Configuracion penales';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
     protected static ?string $navigationGroup = 'Configuraciones';
 
@@ -61,15 +61,18 @@ class PrisionResource extends Resource
         return $table
             ->columns([
                 //
-                TextColumn::make('nombre'),
                 TextColumn::make('codigo')->label('Codigo'),
+                TextColumn::make('nombre'),
+                
 
             ])
+            ->defaultSort('codigo', 'asc')
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->label('Editar'),
+                Tables\Actions\DeleteAction::make()->label('Borrar'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
