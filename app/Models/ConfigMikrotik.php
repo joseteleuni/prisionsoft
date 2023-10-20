@@ -19,14 +19,14 @@ class ConfigMikrotik{
         
         //
         if($this->data['vpn']=='1')
-        
+
         {
             Log::info("Ejecutando config");
     
             $config = new Config([
                 'host' => env('IP_API_MK'),
-                'user' => 'apiinfopyme',
-                'pass' => 'wrtd24ety3f',
+                'user' => env('USER_API_MK'),
+                'pass' => env('PASS_API_MK'),
                 'port' => (int)env('PORT_API_MK'),
             ]);
             
