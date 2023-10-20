@@ -18,33 +18,39 @@ class ConfigMikrotik{
     public function configuracion()  {
         
         //
-        Log::info("Ejecutando config");
-  
-        $config = new Config([
-            'host' => '191.98.141.155',
-            'user' => 'apiinfopyme',
-            'pass' => 'wrtd24ety3f',
-            'port' => 8728,
-        ]);
+        if($this->data['vpn']=='1')
         
-        $client = new Client($config);
-        $comment_portserver=$this->data['nombre']."-MK-Winbox";
-        $comment_pbxssh=$this->data['nombre']."-PBX-SSH";
+        {
+            Log::info("Ejecutando config");
     
-        //Query 
-        $query_portwinbox =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_portserver);
-        $query_pbxssh     =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_pbxssh);
-    
-        //Respuestas queries 
-        $response_portwinbox = $client->query($query_portwinbox)->read();
-        $response_pbxssh     = $client->query($query_pbxssh)->read();
+            $config = new Config([
+                'host' => env('IP_API_MK'),
+                'user' => 'apiinfopyme',
+                'pass' => 'wrtd24ety3f',
+                'port' => (int)env('PORT_API_MK'),
+            ]);
+            
+            $client = new Client($config);
+            $comment_portserver=$this->data['nombre']."-MK-Winbox";
+            $comment_pbxssh=$this->data['nombre']."-PBX-SSH";
         
-        //Recuperando valores
-        Log::info("Cargando valores");
-        $this->puerto_winbox = $response_portwinbox[0]["dst-port"];
-        $this->puerto_pbx    = $response_pbxssh[0]["dst-port"];
-        $this->dominio       = "51-".$this->data['codigo'].".dyndns.org";
-    
+            //Query 
+            $query_portwinbox =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_portserver);
+            $query_pbxssh     =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_pbxssh);
+        
+            //Respuestas queries 
+            $response_portwinbox = $client->query($query_portwinbox)->read();
+            $response_pbxssh     = $client->query($query_pbxssh)->read();
+            
+            //Recuperando valores
+            Log::info("Cargando valores");
+            $this->puerto_winbox = $response_portwinbox[0]["dst-port"];
+            $this->puerto_pbx    = $response_pbxssh[0]["dst-port"];
+           
+        }
+
+        $this->dominio = "51-".$this->data['codigo'].".dyndns.org";
+
     }
     
     
