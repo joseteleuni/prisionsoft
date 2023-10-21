@@ -12,7 +12,7 @@ class PrisionTypeOverview extends BaseWidget
     {
         return [
             //
-            Stat::make('Penales', Prision::query()->count()),
+            Stat::make('Total de Penales', Prision::query()->count()),
             Stat::make('Starlink', Prision::query()->where('starlink','ok')->count()),
             Stat::make('Penales con Yape', Prision::query()->where('implementacion','saldo')->count())
         ];
