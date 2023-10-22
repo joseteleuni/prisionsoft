@@ -28,7 +28,8 @@ class CentralResource extends Resource
                 TextColumn::make('nombre')->searchable(),
                 TextColumn::make('num_gw')->label('Numero de GWs')->searchable(),
                 TextColumn::make('num_tpe')->label('Numero de TPE')->searchable(),
-                TextColumn::make('dominio')->label('Dominio')->searchable(), 
+                //TextColumn::make('dominio')->label('Dominio')->searchable(),
+                TextColumn::make('departamento.nombre')->label('Ubicacion')->searchable(),
                 TextColumn::make('puerto_pbx')->label('Puerto SSH')->searchable(), 
                 
             ])
