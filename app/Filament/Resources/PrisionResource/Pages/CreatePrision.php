@@ -49,6 +49,7 @@ class CreatePrision extends CreateRecord
         $data['puerto_winbox']=$obj->puerto_winbox;
         $data['puerto_pbx']   =$obj->puerto_pbx;
         $data['dominio']      =$obj->dominio;
+        $data['puerto_portserver'] =$obj->puerto_portserver;
 
         return static::getModel()::create($data);
         

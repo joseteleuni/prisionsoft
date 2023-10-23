@@ -35,7 +35,7 @@ class EditPrision extends EditRecord
         $data['puerto_winbox']=$obj->puerto_winbox;
         $data['puerto_pbx']   =$obj->puerto_pbx;
         $data['dominio']      =$obj->dominio;
-
+        $data['puerto_portserver'] =$obj->puerto_portserver;
 
         $record->update($data);
 

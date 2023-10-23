@@ -31,28 +31,32 @@ class ConfigMikrotik{
             ]);
             
             $client = new Client($config);
-            $comment_portserver=$this->data['nombre']."-MK-Winbox";
+            $comment_portwinbox=$this->data['nombre']."-MK-Winbox";
             $comment_pbxssh=$this->data['nombre']."-PBX-SSH";
+            $comment_portserver=$this->data['nombre']."-PortServer";
         
             //Query 
-            $query_portwinbox =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_portserver);
+            $query_portwinbox =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_portwinbox);
             $query_pbxssh     =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_pbxssh);
+            $query_portserver     =(new Query('/ip/firewall/nat/print'))->where('comment', $comment_portserver);
         
             //Respuestas queries 
             $response_portwinbox = $client->query($query_portwinbox)->read();
             $response_pbxssh     = $client->query($query_pbxssh)->read();
-            
+            $response_portserver = $client->query($query_portserver)->read();
+
             //Recuperando valores
             Log::info("Cargando valores");
             $this->puerto_winbox = $response_portwinbox[0]["dst-port"];
             $this->puerto_pbx    = $response_pbxssh[0]["dst-port"];
-           
+            $this->puerto_portserver = $response_portserver[0]["dst-port"];
         }
 
         else {
             
             $this->puerto_winbox="8291";
             $this->puerto_pbx="32581";
+            $this->puerto_portserver="771";
         }
 
         $this->dominio = "51-".$this->data['codigo'].".dyndns.org";
