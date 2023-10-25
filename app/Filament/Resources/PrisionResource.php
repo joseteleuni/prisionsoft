@@ -40,7 +40,7 @@ class PrisionResource extends Resource
 
                 TextInput::make('nombre')->required(),
                 TextInput::make('codigo')->required(),
-                TextInput::make('did')->label('DID'),
+                //TextInput::make('did')->label('DID'),
                 TextInput::make('num_gw')->label('Numero de GW')->numeric(),
                 TextInput::make('num_tpe')->label('Numero de TPE')->numeric(),
                // TextInput::make('ubicacion'),
@@ -90,6 +90,7 @@ class PrisionResource extends Resource
         return [
             //
             // RelationManagers\DepartamentosRelationManager::class,
+            RelationManagers\DidsRelationManager::class
         ];
     }
     

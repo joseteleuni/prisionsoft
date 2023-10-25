@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\PrisionResource\Pages;
+namespace App\Filament\Resources\DidResource\Pages;
 
 use App\Filament\Resources\DidResource;
 use Filament\Actions;
@@ -9,7 +9,11 @@ use Filament\Resources\Pages\ListRecords;
 class ListDids extends ListRecords
 {
     protected static string $resource = DidResource::class;
-    
-    protected static ?string $title = 'Lista de DIDs';  
 
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\CreateAction::make(),
+        ];
+    }
 }

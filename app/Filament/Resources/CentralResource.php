@@ -13,6 +13,7 @@ use App\Filament\Resources\PrisionResource\Pages;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\RichEditor;
+use App\Filament\Resources\PrisionResource\RelationManagers;
 
 class CentralResource extends Resource
 {
@@ -69,8 +70,18 @@ class CentralResource extends Resource
 
         return [
             'index' => Pages\ListCentrals::route('/'),
+            //'edit' => Pages\EditPrision::route('/{record}/edit'),
 
         ];
-    }    
+    }
+    
+    public static function getRelations(): array
+    {
+        return [
+            //
+            // RelationManagers\DepartamentosRelationManager::class,
+            RelationManagers\DidsRelationManager::class
+        ];
+    }
 
 }
