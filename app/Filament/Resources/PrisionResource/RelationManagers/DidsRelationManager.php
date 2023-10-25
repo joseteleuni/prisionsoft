@@ -9,6 +9,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
+
 
 class DidsRelationManager extends RelationManager
 {
@@ -18,9 +20,11 @@ class DidsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nombre')
+                TextInput::make('nombre')
                     ->required()
                     ->maxLength(255),
+                TextInput::make('comentario'),
+        
             ]);
     }
 
