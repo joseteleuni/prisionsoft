@@ -12,12 +12,17 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Filters\SelectFilter;
 
 class DidResource extends Resource
 {
     protected static ?string $model = Did::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Configuraciones';
+
+    protected static ?string $navigationLabel = 'Configuracion DIDs';
 
     public static function form(Form $form): Form
     {
@@ -26,12 +31,10 @@ class DidResource extends Resource
                 Forms\Components\Select::make('prision_id')
                     ->relationship('prision', 'nombre')
                     ->required(),
-                Forms\Components\TextInput::make('nombre')
+                Forms\Components\TextInput::make('nombre')->label('Numero DID')
                     ->required()
                     ->maxLength(10),
-                Forms\Components\TextInput::make('comentario')
-                    ->required()
-                    ->maxLength(50),
+                Forms\Components\TextInput::make('comentario')->label('Puerto GW'),
             ]);
     }
 
@@ -57,9 +60,12 @@ class DidResource extends Resource
             ])
             ->filters([
                 //
+                SelectFilter::make('prision')
+                  ->relationship('prision', 'nombre')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

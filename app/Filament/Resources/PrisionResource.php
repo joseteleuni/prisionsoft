@@ -17,10 +17,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 
-use App\Enums\Fo;
 use App\Enums\Implementacion;
-use App\Enums\Starlink;
-use App\Enums\Vpn;
+//use App\Enums\Starlink;
+//use App\Enums\Vpn;
+use App\Enums\Status;
 
 class PrisionResource extends Resource
 {
@@ -31,6 +31,7 @@ class PrisionResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
     protected static ?string $navigationGroup = 'Configuraciones';
+    
 
     public static function form(Form $form): Form
     {
@@ -50,11 +51,11 @@ class PrisionResource extends Resource
                 Select::make('implementacion')
                   ->options(Implementacion::class),
                 Select::make('fo')
-                  ->options(Fo::class)->label('Fibra optica'),
+                  ->options(Status::class)->label('Fibra optica'),
                 Select::make('starlink')
-                  ->options(Starlink::class),
+                  ->options(Status::class),
                 Select::make('vpn')->label('VPN')
-                  ->options(Vpn::class),
+                  ->options(Status::class),
 
             ]);
     }

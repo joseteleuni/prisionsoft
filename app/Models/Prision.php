@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Departamento;
 
 //
-use App\Enums\Fo;
+use App\Enums\Status;
 use App\Enums\Implementacion;
-use App\Enums\Starlink;
-use App\Enums\Vpn;
+//use App\Enums\Starlink;
+// use App\Enums\Vpn;
 
 
 class Prision extends Model
@@ -21,10 +21,10 @@ class Prision extends Model
     use HasFactory;
 
     protected $casts = [
-        'fo' => Fo::class,
+        'fo' => Status::class,
         'implementacion' => Implementacion::class,
-        'starlink' => Starlink::class,
-        'vpn' => Vpn::class,
+        'starlink' => Status::class,
+        'vpn' => Status::class,
 
     ];
     

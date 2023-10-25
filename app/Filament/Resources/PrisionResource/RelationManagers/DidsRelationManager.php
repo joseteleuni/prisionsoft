@@ -20,10 +20,10 @@ class DidsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                TextInput::make('nombre')
+                TextInput::make('nombre')->label('Numero DID')
                     ->required()
-                    ->maxLength(255),
-                TextInput::make('comentario'),
+                    ->maxLength(10),
+                TextInput::make('comentario')->label('Puerto GW'),
         
             ]);
     }
