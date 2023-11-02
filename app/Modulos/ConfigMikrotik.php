@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Modulos;
 
 use RouterOS\Config;
 use RouterOS\Query;

@@ -5,7 +5,7 @@ namespace App\Filament\Resources\PrisionResource\Pages;
 use App\Filament\Resources\PrisionResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use App\Models\ConfigMikrotik;
+use App\Modulos\ConfigMikrotik;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +29,7 @@ class EditPrision extends EditRecord
     
     protected function handleRecordUpdate(Model $record, array $data): Model
     {
+        
         $obj = new ConfigMikrotik($data);
         $obj->configuracion();
 

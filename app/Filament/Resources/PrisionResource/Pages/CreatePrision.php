@@ -5,7 +5,7 @@ namespace App\Filament\Resources\PrisionResource\Pages;
 use App\Filament\Resources\PrisionResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
-use App\Models\ConfigMikrotik;
+use App\Modulos\ConfigMikrotik;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
@@ -39,7 +39,13 @@ class CreatePrision extends CreateRecord
         //Log::info('Creando registros post-create');
     }
     
-
+      
+    /**
+     * handleRecordCreation
+     *
+     * @param  mixed $data
+     * @return Model
+     */
     protected function handleRecordCreation(array $data): Model
     {   
               
